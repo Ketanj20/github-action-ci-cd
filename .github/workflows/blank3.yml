@@ -26,7 +26,7 @@ jobs:
       # Specify the language(s) to scan
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v3 # Automatically builds compiled languages for analysis
+      uses: dciborow/auto-build-bicep@0.0.1 # Automatically builds compiled languages for analysis
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3 # Performs the actual analysis
