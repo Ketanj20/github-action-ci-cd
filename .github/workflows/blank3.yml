@@ -25,8 +25,7 @@ jobs:
       run: echo "codeql is nicee!"
       # Specify the language(s) to scan
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3 # Automatically builds compiled languages for analysis
+    # Automatically builds compiled languages for analysis
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3 # Performs the actual analysis
