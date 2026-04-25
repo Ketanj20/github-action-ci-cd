@@ -6,26 +6,35 @@ name: CodeQL
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze Code
     runs-on: ubuntu-latest
+
     permissions:
-      security-events: write # Required for uploading SARIF results
-      contents: read # Required for checking out code
+      security-events: write
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript']  # change based on your project (python, java, etc.)
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Initialize CodeQL
-      run: echo "codeql is nicee!"
-      # Specify the language(s) to scan
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
 
-    # Automatically builds compiled languages for analysis
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3 # Performs the actual analysis
+      uses: github/codeql-action/analyze@v3
