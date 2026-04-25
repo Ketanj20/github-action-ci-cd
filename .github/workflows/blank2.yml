@@ -1,0 +1,32 @@
+name: Command line
+
+on:
+  pull_request: 
+    branches: [main]
+  push:
+    branches: [main]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: echo npm ci
+
+      - name: Lint
+        run: echo  npm run lint --if-present
+
+      - name: Test
+        run: echo npm test -- --ci --reporters=default --reporters=jest-junit
+        
