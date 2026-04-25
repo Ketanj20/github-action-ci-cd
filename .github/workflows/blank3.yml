@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+# This workflow is typically generated and pre-configured by GitHub.
+# For illustration, a simplified structure is shown.
+name: CodeQL
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write # Required for uploading SARIF results
+      contents: read # Required for checking out code
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: go # Specify the language(s) to scan
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3 # Automatically builds compiled languages for analysis
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3 # Performs the actual analysis
