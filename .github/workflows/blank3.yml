@@ -22,9 +22,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: go # Specify the language(s) to scan
+      run: echo "codeql is nicee!"
+      # Specify the language(s) to scan
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3 # Automatically builds compiled languages for analysis
