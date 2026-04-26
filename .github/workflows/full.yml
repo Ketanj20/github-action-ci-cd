@@ -17,7 +17,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-          cache: gradle
+          
+          
 
       - name: Build with Gradle
         run: ./gradlew build --stacktrace
@@ -29,5 +30,8 @@ jobs:
           path: build/libs/*.jar
   # Allows you to run this workflow manually from the Actions tab
  
+
+
+
 
 
