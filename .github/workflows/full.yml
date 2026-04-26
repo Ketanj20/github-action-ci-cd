@@ -1,0 +1,33 @@
+
+name: Java CI
+
+on:
+  workflow_dispatch:   # ONLY manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - name: Build with Gradle
+        run: ./gradlew build --stacktrace
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-jar
+          path: build/libs/*.jar
+  # Allows you to run this workflow manually from the Actions tab
+ 
+
+
