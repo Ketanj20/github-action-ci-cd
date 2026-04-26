@@ -2,7 +2,7 @@
 name: Java CI
 
 on:
-  workflow_dispatch:   # ONLY manual trigger
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,8 +17,9 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-          
-          
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew build --stacktrace
