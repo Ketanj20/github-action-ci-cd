@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+
+name: Pysa
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pysa:
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Run Pysa
+        uses: facebook/pysa-action@v1
+        with:
+          repo-directory: .
+      - name: Install dependencies
+       run: echo pip install -r requirements.txt
+        
+
+        
