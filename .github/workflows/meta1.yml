@@ -10,17 +10,19 @@ jobs:
   pysa:
     runs-on: ubuntu-latest
 
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          submodules: true
 
-      - name: Run Pysa
-        uses: facebook/pysa-action@0.0.1
+      - name: Install Pyre (Pysa)
+        run: |
+          pip install pyre-check
+
+      - name: Initialize Pyre
+        run: |
+          pyre init --noninteractive || true
+
+      - name: Run Pysa analysis
+        run: |
+          pyre analyze
         
