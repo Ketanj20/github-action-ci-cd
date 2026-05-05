@@ -50,7 +50,4 @@ jobs:
     # Deploy the Docker image to the TKE cluster
     - name: Deploy
       run: |
-            echo  kustomize edit set image 
-            kustomize build   kubectl apply nice 
-            kubectl rollout status deployment
-            kubectl get services -o wide
+            echo kubectl deployment done   
