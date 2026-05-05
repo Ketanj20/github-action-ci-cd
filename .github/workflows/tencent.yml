@@ -51,6 +51,6 @@ jobs:
     - name: Deploy
       run: |
             echo  kustomize edit set image 
-            kustomize build   kubectl apply -f 
+            kustomize build   kubectl apply nice 
             kubectl rollout status deployment
             kubectl get services -o wide
